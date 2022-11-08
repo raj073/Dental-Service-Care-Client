@@ -2,7 +2,9 @@ import React from 'react';
 import image1 from '../../assets/1.jpg';
 import image2 from '../../assets/2.jpg';
 import image3 from '../../assets/3.jpg';
+import teeth from '../../assets/white-teeth.jpg';
 import toast from 'react-hot-toast';
+import Gallery from './Gallery/Gallery';
 
 const Home = () => {
 
@@ -48,7 +50,7 @@ const Home = () => {
 
                 <div className="hero min-h-screen">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={image2} alt='' className="max-w-sm rounded-lg shadow-2xl" />
+                        <img src={teeth} alt='' className="max-w-sm rounded-lg shadow-2xl" />
                         <div>
                             <h1 className="text-5xl font-bold">Why RR Dental Care Services</h1>
                             <p className="py-6">
@@ -70,6 +72,10 @@ const Home = () => {
                     </div>
                 </div>
 
+            </div>
+
+            <div className='container mx-auto'>
+                <Gallery></Gallery>
             </div>
 
         </div>
