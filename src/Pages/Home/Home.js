@@ -2,8 +2,15 @@ import React from 'react';
 import image1 from '../../assets/1.jpg';
 import image2 from '../../assets/2.jpg';
 import image3 from '../../assets/3.jpg';
+import toast from 'react-hot-toast';
 
 const Home = () => {
+
+    const handleGetAppoint = () => {
+        toast.success('Congratulations! Your Appointment Has Been Confirmed.', {
+            position: "top-center"
+        });
+    }
 
     return (
 
@@ -46,19 +53,19 @@ const Home = () => {
                             <h1 className="text-5xl font-bold">Why RR Dental Care Services</h1>
                             <p className="py-6">
                                 <div className='mb-4'>
-                                    <kbd className="kbd">⌘</kbd> &nbsp; &nbsp;
+                                    <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
                                     <span className='text-xl font-bold'>Highest-rated dentistry in Dhaka, Bangladesh</span>
                                 </div>
                                 <div className='mb-4'>
-                                    <kbd className="kbd">⌘</kbd> &nbsp; &nbsp;
+                                    <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
                                     <span className='text-xl font-bold'>Clean, Comfortable, and Modern Studios</span>
                                 </div>
                                 <div>
-                                    <kbd className="kbd">⌘</kbd> &nbsp; &nbsp;
+                                    <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
                                     <span className='text-xl font-bold'>Transparent Care and Pricing</span>
                                 </div>
                             </p>
-                            <button className="btn btn-primary">Get Appointment</button>
+                            <button onClick={handleGetAppoint} className="btn btn-primary">Get Appointment</button>
                         </div>
                     </div>
                 </div>
