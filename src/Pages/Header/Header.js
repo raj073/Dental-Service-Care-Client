@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png';
 const Header = () => {
     return (
 
-        <div className="navbar bg-base-100 mb-8 pt-3 pb-3 shadow-2xl">
+        <div className="navbar bg-base-100 mb-8 pt-3 pb-3 shadow-lg">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -17,6 +17,9 @@ const Header = () => {
                         </li>
                         <li>
                             <Link to='/blog'>Blog</Link>
+                        </li>
+                        <li>
+                            <Link to='/login'>Login</Link>
                         </li>
 
                     </ul>
@@ -35,6 +38,9 @@ const Header = () => {
                     </li>
                     <li>
                         <Link to='/blog'>Blog</Link>
+                    </li>
+                    <li>
+                        <Link to='/login'>Login</Link>
                     </li>
                 </ul>
             </div>

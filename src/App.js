@@ -7,7 +7,7 @@ function App() {
 
   return (
 
-    <div>
+    <div className='max-w-screen-xl mx-auto'>
 
       <RouterProvider router={routes}></RouterProvider>
       <Toaster></Toaster>

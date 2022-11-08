@@ -7,7 +7,7 @@ const Home = () => {
 
     return (
 
-        <div className="carousel carousel-center w-5/6 mx-24 rounded-sm">
+        <div className="carousel carousel-end rounded-box w-full h-3/5 mx-auto">
             <div id="slide1" className="carousel-item relative w-full">
                 <img src={image1} alt='Slider Image1' className="w-full" />
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
