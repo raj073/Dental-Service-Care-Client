@@ -27,7 +27,7 @@ const Header = () => {
 
                 <Link to='/' className="btn btn-ghost normal-case text-xl">
                     <img style={{ height: '45px', width: '65px' }} src={logo} alt="" />
-                    Dental Care Services
+                    RR Dental Care Services
                 </Link>
 
             </div>
