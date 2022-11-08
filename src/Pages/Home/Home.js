@@ -8,10 +8,12 @@ import Gallery from './Gallery/Gallery';
 
 const Home = () => {
 
-    const handleGetAppoint = () => {
+    const handleGetAppoint = (event) => {
+        event.preventDefault();
         toast.success('Congratulations! Your Appointment Has Been Confirmed.', {
             position: "top-center"
         });
+        event.target.reset();
     }
 
     return (
@@ -48,33 +50,60 @@ const Home = () => {
 
             <div>
 
-                <div className="hero min-h-screen">
-                    <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img src={teeth} alt='' className="max-w-sm rounded-lg shadow-2xl" />
-                        <div>
-                            <h1 className="text-5xl font-bold">Why RR Dental Care Services</h1>
-                            <p className="py-6">
-                                <div className='mb-4'>
-                                    <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
-                                    <span className='text-xl font-bold'>Highest-rated dentistry in Dhaka, Bangladesh</span>
+                <div className='mt-12'>
+                    <div className="hero">
+                        <div className="hero-content flex-col lg:flex-row mx-20">
+                            <div className="text-center lg:text-left mx-10">
+                                <h1 className="text-5xl font-bold">Why RR Dental Care Services</h1>
+                                <p className="py-8 text-xl">
+                                    <div className='mb-4'>
+                                        <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
+                                        <span className='text-xl font-bold'>Highest-rated dentistry in Dhaka, Bangladesh</span>
+                                    </div>
+                                    <div className='mb-4'>
+                                        <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
+                                        <span className='text-xl font-bold'>Clean, Comfortable, and Modern Studios</span>
+                                    </div>
+                                    <div>
+                                        <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
+                                        <span className='text-xl font-bold'>Transparent Care and Pricing</span>
+                                    </div>
+                                </p>
+                            </div>
+                            <form className="card w-1/2 shadow-xl bg-base-100" onSubmit={handleGetAppoint}>
+                                <div className="card-body">
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text font-semibold text-cyan-600">Patient Name</span>
+                                        </label>
+                                        <input type="text" placeholder="Patient Name" className="input input-bordered" required />
+                                    </div>
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text font-semibold text-cyan-600">Disease</span>
+                                        </label>
+                                        <input type="text" placeholder="Disease" className="input input-bordered w-full" required />
+                                    </div>
+
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text font-semibold text-cyan-600">Appointment Date</span>
+                                        </label>
+                                        <input type="datetime-local" className="input input-bordered" required />
+                                    </div>
+
+                                    <input className='btn bg-gradient-to-r from-violet-500 to-fuchsia-500
+                                     hover:bg-gradient-to-r border-0 mt-5' type="submit"
+                                        value="Get Appointment" />
                                 </div>
-                                <div className='mb-4'>
-                                    <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
-                                    <span className='text-xl font-bold'>Clean, Comfortable, and Modern Studios</span>
-                                </div>
-                                <div>
-                                    <kbd className="kbd text-white bg-warning">⌘</kbd> &nbsp; &nbsp;
-                                    <span className='text-xl font-bold'>Transparent Care and Pricing</span>
-                                </div>
-                            </p>
-                            <button onClick={handleGetAppoint} className="btn btn-primary">Get Appointment</button>
+                            </form>
                         </div>
                     </div>
-                </div>
+                </div >
 
             </div>
 
-            <div className='container mx-auto'>
+            <div className='container mx-auto mt-8'>
                 <Gallery></Gallery>
             </div>
 
