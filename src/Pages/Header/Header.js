@@ -1,8 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+import { AuthContext } from '../../Contexts/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                navigate('/login');
+                toast.success('User Successfully Logout', {
+                    position: "top-center"
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
 
         <div className="navbar bg-base-100 mb-8 pt-3 pb-3 shadow-lg">
@@ -18,12 +37,37 @@ const Header = () => {
                         <li>
                             <Link to='/blog'>Blog</Link>
                         </li>
-                        <li>
-                            <Link to='/login'>Login</Link>
-                        </li>
-                        <li>
-                            <Link to='/signup'>Sign Up</Link>
-                        </li>
+
+                        {
+                            user?.uid ?
+                                <>
+                                    <span className="d-inline-block">
+                                        {
+                                            user?.photoURL ?
+                                                <img alt='User'
+                                                    style={{ height: '40px' }}
+                                                    roundedCircle
+                                                    src={user?.photoURL}>
+                                                </img>
+                                                : <div>User</div>
+                                        }
+                                    </span>
+                                    <li>
+                                        <button onClick={handleSignOut} className="btn btn-outline btn-warning">Sign Out</button>
+                                    </li>
+                                </>
+                                :
+                                <>
+                                    <li>
+                                        <Link to='/login'>Login</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/signup'>Sign Up</Link>
+                                    </li>
+                                </>
+                        }
+
+
 
                     </ul>
                 </div>
@@ -42,12 +86,36 @@ const Header = () => {
                     <li>
                         <Link to='/blog'>Blog</Link>
                     </li>
-                    <li>
-                        <Link to='/login'>Login</Link>
-                    </li>
-                    <li>
-                        <Link to='/signup'>Sign Up</Link>
-                    </li>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {
+                        user?.uid ?
+                            <>
+                                <span className="d-inline-block">
+                                    {
+                                        user?.photoURL ?
+                                            <img alt='User'
+                                                style={{ height: '40px' }}
+                                                roundedCircle
+                                                src={user?.photoURL}>
+                                            </img>
+                                            : <div>User</div>
+                                    }
+                                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <li>
+                                    <button onClick={handleSignOut} className="btn btn-outline btn-warning">Sign Out</button>
+                                </li>
+                            </>
+                            :
+                            <>
+                                <li>
+                                    <Link to='/login'>Login</Link>
+                                </li>
+                                <li>
+                                    <Link to='/signup'>Sign Up</Link>
+                                </li>
+                            </>
+                    }
+
                 </ul>
             </div>
             <div className="navbar-end">
