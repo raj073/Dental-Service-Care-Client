@@ -30,6 +30,9 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error);
+                toast.error(error.message, {
+                    position: "top-center"
+                });
             })
     }
 
@@ -45,6 +48,9 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error);
+                toast.error(error.message, {
+                    position: "top-center"
+                });
             })
     }
 
@@ -69,6 +75,9 @@ const Login = () => {
                 console.log(error);
                 setError(error.message);
                 form.reset();
+                toast.error(error.message, {
+                    position: "top-center"
+                });
             })
     }
 
@@ -85,17 +94,17 @@ const Login = () => {
                         <label for="email" className="block text-sm font-semibold text-gray-800">
                             Email
                         </label>
-                        <input type="email" name='email' placeholder='Email' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                        <input type="email" name='email' placeholder='Email' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required
                         />
                     </div>
                     <div className="mb-2">
                         <label for="password" className="block text-sm font-semibold text-gray-800">
                             Password
                         </label>
-                        <input type="password" name='password' placeholder='Password' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        <input type="password" name='password' placeholder='Password' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" required />
                     </div>
                     <div className="mb-2">
-                        <p className='text-orange-500 font-bold p-3 fw-bold shadow-lg rounded'>
+                        <p className='text-orange-500 font-bold p-3 fw-bold rounded'>
                             {error}
                         </p>
                     </div>

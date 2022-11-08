@@ -37,21 +37,27 @@ const Header = () => {
                         <li>
                             <Link to='/blog'>Blog</Link>
                         </li>
+                        <li>
+                            <Link to='/services'>Services</Link>
+                        </li>
 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {
                             user?.uid ?
                                 <>
-                                    <span className="d-inline-block">
-                                        {
-                                            user?.photoURL ?
-                                                <img alt='User'
-                                                    style={{ height: '40px' }}
-                                                    roundedCircle
-                                                    src={user?.photoURL}>
-                                                </img>
-                                                : <div>User</div>
-                                        }
-                                    </span>
+                                    <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                        <span className="d-inline-block">
+                                            {
+                                                user?.photoURL ?
+                                                    <img className='rounded-full' alt='User'
+                                                        style={{ height: '40px' }}
+                                                        src={user?.photoURL}>
+                                                    </img>
+                                                    : <div>User</div>
+                                            }
+                                        </span>
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <li>
                                         <button onClick={handleSignOut} className="btn btn-outline btn-warning">Sign Out</button>
                                     </li>
@@ -66,8 +72,6 @@ const Header = () => {
                                     </li>
                                 </>
                         }
-
-
 
                     </ul>
                 </div>
@@ -85,6 +89,9 @@ const Header = () => {
                     </li>
                     <li>
                         <Link to='/blog'>Blog</Link>
+                    </li>
+                    <li>
+                        <Link to='/services'>Services</Link>
                     </li>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {

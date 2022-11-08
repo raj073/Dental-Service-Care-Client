@@ -36,6 +36,9 @@ const SignUp = () => {
                 console.error(error);
                 setError(error.message);
                 form.reset();
+                toast.error(error.message, {
+                    position: "top-center"
+                });
             })
     }
 
@@ -71,7 +74,7 @@ const SignUp = () => {
                             Full Name
                         </label>
                         <input type="text" name='name' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                            placeholder='Full Name' />
+                            placeholder='Full Name' required />
                     </div>
 
                     <div className="mb-2">
@@ -79,7 +82,7 @@ const SignUp = () => {
                             Photo URL
                         </label>
                         <input type="text" name='photoURL' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                            placeholder='Photo URL' />
+                            placeholder='Photo URL' required />
                     </div>
 
                     <div className="mb-2">
@@ -87,14 +90,20 @@ const SignUp = () => {
                             Email
                         </label>
                         <input type="email" name='email' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                            placeholder='Email' />
+                            placeholder='Email' required />
                     </div>
 
                     <div className="mb-2">
                         <label for="password" className="block text-sm font-semibold text-gray-800">
                             Password
                         </label>
-                        <input type="password" name='password' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder='Password' />
+                        <input type="password" name='password' className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder='Password' required />
+                    </div>
+
+                    <div className="mb-2">
+                        <p className='text-orange-500 font-bold p-3 fw-bold rounded'>
+                            {error}
+                        </p>
                     </div>
 
                     <div className="mt-6">
