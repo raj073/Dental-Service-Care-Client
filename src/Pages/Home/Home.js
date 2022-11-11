@@ -2,7 +2,6 @@ import React from 'react';
 import image1 from '../../assets/1.jpg';
 import image2 from '../../assets/2.jpg';
 import image3 from '../../assets/3.jpg';
-import teeth from '../../assets/white-teeth.jpg';
 import toast from 'react-hot-toast';
 import Gallery from './Gallery/Gallery';
 import HomeServices from './HomeServices/HomeServices'
