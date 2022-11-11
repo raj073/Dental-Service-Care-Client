@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCaFaKJG1kpkStHLAjsPGn2eP7UfayhSrk",
-    authDomain: "dental-care-services-afaee.firebaseapp.com",
-    projectId: "dental-care-services-afaee",
-    storageBucket: "dental-care-services-afaee.appspot.com",
-    messagingSenderId: "596079884397",
-    appId: "1:596079884397:web:e8518d030b27a1971f6764"
+    apiKey: "AIzaSyCPv5aDEVXoVZ0s1xf46jvkeyKHVgoYVR8",
+    authDomain: "dental-service-care.firebaseapp.com",
+    projectId: "dental-service-care",
+    storageBucket: "dental-service-care.appspot.com",
+    messagingSenderId: "910214346638",
+    appId: "1:910214346638:web:b5678339a3cbfe997c56df"
 };
 
 // Initialize Firebase

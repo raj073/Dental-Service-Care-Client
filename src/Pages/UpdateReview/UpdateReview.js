@@ -15,7 +15,7 @@ const UpdateReview = () => {
         const updatedText = form.updatedReview.value;
         console.log('updated text: ', updatedText);
 
-        fetch(`http://localhost:5000/review/${review._id}`, {
+        fetch(`https://b6a11-service-review-server-side-raj073-main.vercel.app/review/${review._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +39,7 @@ const UpdateReview = () => {
             <p>Your Review: <span className='font-bold'>{review?.reviewText}</span> </p>
             <form onSubmit={handleUpdate} className="card-body">
                 <div className="form-control">
-                    <input type="text" name='updatedReview' placeholder="Update your review" className="input input-bordered text-black" required />
+                    <input type="text" name='updatedReview' placeholder="Update your review" className="input input-bordered text-white" required />
                 </div>
                 <div className="form-control mt-6">
                     <input className="btn btn-info hover:bg-success" type="submit" value="Update" />

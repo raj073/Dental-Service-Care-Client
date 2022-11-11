@@ -6,8 +6,10 @@ import teeth from '../../assets/white-teeth.jpg';
 import toast from 'react-hot-toast';
 import Gallery from './Gallery/Gallery';
 import HomeServices from './HomeServices/HomeServices'
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
+    useTitle('home');
 
     const handleGetAppoint = (event) => {
         event.preventDefault();

@@ -21,7 +21,7 @@ const AddService = () => {
             img: serviceImg,
         }
 
-        fetch('http://localhost:5000/addService', {
+        fetch('https://b6a11-service-review-server-side-raj073-main.vercel.app/addService', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
