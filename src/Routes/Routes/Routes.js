@@ -3,8 +3,14 @@ import Main from '../../layout/Main';
 import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
-import Services from "../../Pages/Services/Services";
 import SignUp from "../../Pages/SignUp/SignUp";
+import NoPageFound from '../../Pages/NoPageFound/NoPageFound';
+import AllServices from "../../Pages/AllServices/AllServices";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import MyReviews from "../../Pages/MyReviews/MyReviews";
+import ServiceDetail from "../../Pages/ServiceDetail/ServiceDetail";
+import AddService from "../../Pages/AddService/AddService";
+import UpdateReview from "../../Pages/UpdateReview/UpdateReview";
 
 export const routes = createBrowserRouter([
     {
@@ -14,10 +20,6 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
-            },
-            {
-                path: '/services',
-                element: <Services></Services>
             },
             {
                 path: '/blog',
@@ -30,6 +32,28 @@ export const routes = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/allServices',
+                element: <AllServices></AllServices>
+            },
+            {
+                path: '/service/:serviceId',
+                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.serviceId}`),
+                element: <ServiceDetail></ServiceDetail>
+            },
+            {
+                path: '/myReviews',
+                element: <PrivateRoute> <MyReviews></MyReviews></PrivateRoute>,
+            },
+            {
+                path: '/addService',
+                element: <PrivateRoute> <AddService></AddService> </PrivateRoute>,
+            },
+            {
+                path: '/updateReview/:_id',
+                loader: ({ params }) => fetch(`http://localhost:5000/reviewById/${params._id}`),
+                element: <UpdateReview></UpdateReview>,
             },
             {
                 path: '*',

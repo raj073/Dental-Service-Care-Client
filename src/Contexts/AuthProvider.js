@@ -10,63 +10,53 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-
     const googleSignIn = (provider) => {
         setLoading(true);
-        return signInWithPopup(auth, provider);
+        return signInWithPopup(auth, provider)
+            .finally(() => { setLoading(false) });
     }
 
-    const githubSignIn = (provider) => {
-        setLoading(true);
-        return signInWithPopup(auth, provider);
-    }
 
     const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password)
+            .finally(() => { setLoading(false) });
     }
 
-    const signIn = (email, password) => {
+    const login = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password)
+            .finally(() => { setLoading(false) });
+    }
+
+    const logOut = () => {
+        localStorage.removeItem('doc-token');
+        return signOut(auth);
     }
 
     const updateUserProfile = (profile) => {
         return updateProfile(auth.currentUser, profile);
     }
-
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth);
-    }
-
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('Inside Auth State Change:', currentUser);
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
-
         });
 
         return () => {
-            unsubscribe();
+            return unsubscribe();
         }
-
     }, [])
-
-
 
     const authInfo = {
         user,
         loading,
-        googleSignIn,
-        githubSignIn,
         createUser,
-        signIn,
-        updateUserProfile,
-        logOut
-
-    };
+        login,
+        logOut,
+        googleSignIn,
+        updateUserProfile
+    }
 
     return (
 

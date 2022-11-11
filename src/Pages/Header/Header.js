@@ -3,135 +3,77 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import toast from 'react-hot-toast';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
-
     const { user, logOut } = useContext(AuthContext);
-    const navigate = useNavigate();
 
-    const handleSignOut = () => {
+    const handleLogOut = () => {
         logOut()
-            .then(() => {
-                navigate('/login');
-                toast.success('User Successfully Logout', {
-                    position: "top-center"
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            })
+            .then()
+            .catch();
     }
 
-    return (
+    const menuItems = <>
+        <li className='font-bold text-cyan-600 ml-3'><Link to='/'>Home</Link></li>
+        <li className='font-bold text-cyan-600 ml-3'><Link to='/allServices'>Services</Link></li>
+        <li className='font-bold text-cyan-600 ml-3'><Link to='/blog'>Blog</Link></li>
+        {
+            user?.email ?
+                <>
 
-        <div className="navbar bg-base-100 mb-8 pt-3 pb-3 shadow-lg">
+                    <li className='font-bold  text-cyan-600 ml-3'>
+                        <Link to='/myReviews'>My Reviews</Link>
+                    </li>
+                    <li className='font-bold  text-cyan-600 ml-3'>
+                        <Link to='/addService'>Add service</Link>
+                    </li>
+                    <li className='font-bold'>
+                        <button onClick={handleLogOut} className='btn-ghost text-gray-500 ml-4'>Sign Out</button>
+                    </li>
+                    <li className='font-semibold'>
+                        <button className='btn bg-white border-0 hover:bg-green-200 text-gray-500' title={user?.displayName}> <small> user:</small>
+                            <div className='avatar'>
+                                <div className="w-8 rounded-full">
+                                    {
+                                        user?.photoURL ? <img src={user?.photoURL} alt="" /> : <FaUser className='mx-1 mt-2'></FaUser>
+                                    }
+
+                                </div>
+
+                            </div>
+                        </button>
+                    </li>
+                </>
+                :
+                <li className='font-bold text-cyan-600 lg:ml-10'><Link to='/login'>Login</Link></li>
+        }
+    </>
+
+    return (
+        <div className="navbar h-20 mb-12 pt-12 bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <Link to='/'>Home</Link>
-                        </li>
-                        <li>
-                            <Link to='/blog'>Blog</Link>
-                        </li>
-                        <li>
-                            <Link to='/services'>Services</Link>
-                        </li>
-
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {
-                            user?.uid ?
-                                <>
-                                    <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-                                        <span className="d-inline-block">
-                                            {
-                                                user?.photoURL ?
-                                                    <img className='rounded-full' alt='User'
-                                                        style={{ height: '40px' }}
-                                                        src={user?.photoURL}>
-                                                    </img>
-                                                    : <div>User</div>
-                                            }
-                                        </span>
-                                    </div>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <li>
-                                        <button onClick={handleSignOut} className="btn btn-outline btn-warning">Sign Out</button>
-                                    </li>
-                                </>
-                                :
-                                <>
-                                    <li>
-                                        <Link to='/login'>Login</Link>
-                                    </li>
-                                    <li>
-                                        <Link to='/signup'>Sign Up</Link>
-                                    </li>
-                                </>
-                        }
-
+                        {menuItems}
                     </ul>
                 </div>
-
-                <Link to='/' className="btn btn-ghost normal-case text-xl">
-                    <img style={{ height: '45px', width: '65px' }} src={logo} alt="" />
-                    RR Dental Care Services
+                <Link to="/" className="btn btn-ghost normal-case text-xl">
+                    <img className='w-44' src={logo} alt="" />
                 </Link>
-
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                    <li>
-                        <Link to='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/blog'>Blog</Link>
-                    </li>
-                    <li>
-                        <Link to='/services'>Services</Link>
-                    </li>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {
-                        user?.uid ?
-                            <>
-                                <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-                                    <span className="d-inline-block">
-                                        {
-                                            user?.photoURL ?
-                                                <img className='rounded-full' alt='User'
-                                                    style={{ height: '40px' }}
-                                                    src={user?.photoURL}>
-                                                </img>
-                                                : <div>User</div>
-                                        }
-                                    </span>
-                                </div>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <li>
-                                    <button onClick={handleSignOut} className="btn btn-outline btn-warning">Sign Out</button>
-                                </li>
-                            </>
-                            :
-                            <>
-                                <li>
-                                    <Link to='/login'>Login</Link>
-                                </li>
-                                <li>
-                                    <Link to='/signup'>Sign Up</Link>
-                                </li>
-                            </>
-                    }
-
+                    {menuItems}
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/' className='btn btn-accent rounded-none'> BOOK ONLINE</Link>
+                <Link to='/appointment'><button className="btn btn-outline btn-success">Appointment</button></Link>
             </div>
         </div>
-
     );
 };
 

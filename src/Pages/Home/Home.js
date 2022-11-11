@@ -5,6 +5,7 @@ import image3 from '../../assets/3.jpg';
 import teeth from '../../assets/white-teeth.jpg';
 import toast from 'react-hot-toast';
 import Gallery from './Gallery/Gallery';
+import HomeServices from './HomeServices/HomeServices'
 
 const Home = () => {
 
@@ -101,6 +102,10 @@ const Home = () => {
                     </div>
                 </div >
 
+            </div>
+
+            <div>
+                <HomeServices></HomeServices>
             </div>
 
             <div className='container mx-auto mt-8'>
